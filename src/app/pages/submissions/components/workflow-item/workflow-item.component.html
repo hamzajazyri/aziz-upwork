@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="header">
+    <h3>Work Flow: {{val.text}}</h3>
+    <div class="status {{val.status}}" >
+      <mat-icon>circle</mat-icon>
+      {{val.status}}
+    </div>
+  </div>
+  <div class="info">
+    <div class="info-item">
+      <label>From:</label>
+      <div class="info-val">{{val.from}}</div>
+    </div>
+    <div class="info-item">
+      <label>To:</label>
+      <div class="info-val">{{val.to}}</div>
+    </div>
+    <div class="info-item">
+      <label>Due Date:</label>
+      <div class="info-val date">{{val.dueDate | date:'dd MMMM'}}</div>
+    </div>
+  </div>
+</div>

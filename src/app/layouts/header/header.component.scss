@@ -1,0 +1,57 @@
+nav {
+    background: #2188D9;
+    color: #fff;
+    // padding: 0px 32px;
+
+    .main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 3.75em;
+        padding:0px 2em;
+
+        .logo {
+            letter-spacing: 0.02em;
+            font-weight: 700;
+            font-size: 2em;
+            margin:0px;
+        }
+
+        ul {
+            list-style: none;
+            li {
+                float: left;
+                display: flex;
+                align-items: center;
+                font-weight: 500;
+                font-size: 1.125em;
+                cursor: pointer;
+                &.active{
+                  background: linear-gradient(180deg, #1773BB 0%, transparent 49%),
+                              linear-gradient(0deg, #1773BB 0%, transparent 49%);
+
+                }
+                &:hover{
+                  background: linear-gradient(180deg, #1773BB 30%, transparent);
+                }
+            }
+
+            &.list-items{
+                height: 100%;
+                li{
+                    width:10em;
+                    height: 100%;
+                    justify-content: space-evenly;
+                    padding:0px 0.625em;
+                }
+            }
+            &.list-icons{
+                li{
+                    padding:0.625em;
+                    border-radius: 0.625em;
+                }
+            }
+        }
+
+    }
+}

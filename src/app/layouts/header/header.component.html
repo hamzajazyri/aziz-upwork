@@ -1,0 +1,41 @@
+<nav>
+    <div class="main">
+        <h1 class="logo">ZenduForms</h1>
+
+        <ul class="list-items">
+            <li>
+                <mat-icon>format_list_bulleted</mat-icon>
+                <span>Forms</span>
+            </li>
+            <li>
+                <mat-icon>group</mat-icon>
+                <span>Customers</span>
+            </li>
+            <li [routerLink]="['/submissions']" routerLinkActive="active" >
+                <mat-icon>graphic_eq</mat-icon>
+                <span>Submissions</span>
+            </li>
+            <li>
+                <mat-icon>history</mat-icon>
+                <span>History</span>
+            </li>
+            <li>
+                <mat-icon>insert_chart_outlined</mat-icon>
+                <span>Reports</span>
+            </li>
+            <li>
+                <mat-icon>insert_chart_outlined</mat-icon>
+                <span>Workflow</span>
+            </li>
+        </ul>
+
+        <ul class="list-icons">
+            <li>
+                <mat-icon>notifications</mat-icon>
+            </li>
+            <li>
+                <mat-icon>logout</mat-icon>
+            </li>
+        </ul>
+    </div>
+</nav>

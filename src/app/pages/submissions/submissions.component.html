@@ -1,0 +1,76 @@
+<div class="page-main">
+  <h1 class="title">Submissions</h1>
+  <div class="filter">
+    <form [formGroup]="filterForm">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Search...</mat-label>
+        <mat-icon [ngStyle]="{ color: '#B8B9BC' }" matPrefix>search</mat-icon>
+        <input type="text" matInput autocomplete="off" formControlName="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Select Form</mat-label>
+        <mat-select formControlName="form">
+          <mat-option
+            *ngFor="let val of ['form_1', 'form_2', 'form_3']"
+            [value]="val"
+            >{{ val.replace("_", " ") | uppercase }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Select Status</mat-label>
+        <mat-select [disableOptionCentering]="true" [disableRipple]="true" formControlName="status">
+          <mat-option
+            *ngFor="let val of ['Uncomplete', 'Low Risk', 'Needs Review']"
+            [value]="val.replace(' ','')"
+            >{{ val }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pick Date</mat-label>
+        <mat-icon [ngStyle]="{ color: '#B8B9BC' }" matPrefix
+          >calendar_month</mat-icon
+        >
+        <input
+          formControlName="dueDate"
+          matInput
+          [matDatepicker]="picker"
+          (focus)="picker.open()"
+          type="text"
+          autocomplete="off"
+        />
+        <mat-datepicker #picker color="primary"></mat-datepicker>
+      </mat-form-field>
+    </form>
+
+    <div>
+      <mat-button-toggle-group>
+        <mat-button-toggle value="Map" [checked]="true">Map</mat-button-toggle>
+        <mat-button-toggle value="List">List</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <button mat-button [ngStyle]="{ color: '#2188D9' }">
+        <mat-icon [ngStyle]="{ transform: 'rotate(180deg)' }">upload_file</mat-icon>
+        Export
+      </button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="items-container">
+      <app-workflow-item
+        *ngFor="let sub of (submissions$ | async)"
+        [val]="sub"
+        ></app-workflow-item>
+        <div *ngIf="!(submissions$ | async)?.length">Empty Data</div>
+    </div>
+    <div class="map-container">
+      <google-map height="100%" width="100%" [options]="mapOptions" [zoom]="2" class="map">
+        <map-marker *ngFor="let sub of (submissions$ | async)" [position]="{lat:sub.latitude, lng:sub.longitude}"></map-marker>
+      </google-map>
+    </div>
+  </div>
+</div>
